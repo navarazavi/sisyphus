@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Sisyphus</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <title>Sisyphus AI</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
       <h1>sisyphus <span class="ai">AI</span></h1>
+
       <div class="chatbox">
         <div class="messages" id="messages">
-          <div class="message bot">
-            <span class="dot"></span>Good evening. What burden are we carrying tonight?
-          </div>
+          <p class="message bot">
+            <span class="dot"></span>Good evening. What burden are we carrying
+            tonight?
+          </p>
         </div>
         <div class="input-area">
           <input type="text" placeholder="Type a message . . ." />
@@ -20,6 +26,10 @@
         </div>
       </div>
     </div>
+
+    <!-- Rolling Boulder Image -->
+    <img src="moving_boulder.png" id="rollingBoulder" class="boulder" />
+
     <script src="script.js"></script>
   </body>
 </html>
