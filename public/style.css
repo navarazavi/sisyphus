@@ -1,13 +1,13 @@
-/* === style.css (pre-boulder, clean alignment) === */
 body {
   background-color: #f2f2f2;
   font-family: "Space Grotesk", sans-serif;
   color: #1a1a1a;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
   margin: 0;
+  padding-top: 40px;
 }
 
 .container {
@@ -19,6 +19,7 @@ body {
 h1 {
   font-size: 48px;
   letter-spacing: -1px;
+  margin-bottom: 10px;
 }
 
 .ai {
@@ -28,7 +29,7 @@ h1 {
 
 .chatbox {
   background: white;
-  border: 2px solid #6c7a89; /* slate gray/blue */
+  border: 2px solid #6c7a89;
   border-radius: 16px;
   padding: 20px;
   margin-top: 30px;
@@ -42,37 +43,38 @@ h1 {
 .messages {
   flex: 1;
   overflow-y: auto;
-  margin-bottom: 20px;
   padding-right: 10px;
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .message {
-  font-size: 15px;
-  margin-bottom: 24px;
-  line-height: 1.4;
-  max-width: 80%;
-  padding: 10px 14px;
-  border-radius: 20px;
   display: inline-block;
-}
-
-.user {
-  background-color: #e4e4e4;
-  color: #000;
-  margin-left: auto;
-  text-align: right;
+  font-size: 15px;
+  line-height: 1.4;
+  padding: 10px 14px;
+  border-radius: 16px;
+  max-width: 75%;
+  word-wrap: break-word;
 }
 
 .bot {
-  background-color: #f7f7f7;
-  color: #1a1a1a;
+  background-color: #f0f0f0;
+  align-self: flex-start;
   text-align: left;
+}
+
+.user {
+  background-color: #e6e6e6;
+  align-self: flex-end;
+  text-align: right;
 }
 
 .input-area {
   display: flex;
   align-items: center;
+  margin-top: 10px;
 }
 
 input[type="text"] {
@@ -111,3 +113,4 @@ button:hover {
   border-radius: 50%;
   margin-right: 8px;
 }
+
