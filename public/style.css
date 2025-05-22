@@ -117,7 +117,7 @@ button:hover {
 /* 🎯 ROLLING BOULDER */
 #rollingBoulder {
   position: fixed;
-  bottom: 10px;
+  bottom: 3px;
   left: 0;
   width: 60px;
   height: auto;
