@@ -27,6 +27,34 @@ h1 {
   vertical-align: super;
 }
 
+/* 🪨 Boulder Track & Animation */
+.boulder-track {
+  width: 100%;
+  height: 60px;
+  position: relative;
+  margin-bottom: -40px;
+  overflow: hidden;
+}
+
+#rollingBoulder {
+  width: 50px;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: slowBounceRoll 30s ease-in-out infinite alternate;
+}
+
+@keyframes slowBounceRoll {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateX(500px) rotate(-360deg);
+  }
+}
+
+/* 💬 Chatbox Layout */
 .chatbox {
   background: white;
   border: 2px solid #6c7a89;
@@ -58,20 +86,23 @@ h1 {
   max-width: 75%;
   word-wrap: break-word;
   text-align: left;
+  width: fit-content;
 }
 
+/* 🤖 Bot bubble on left */
 .bot {
   background-color: #f0f0f0;
   align-self: flex-start;
 }
 
+/* 🧍‍♀️ User bubble on right */
 .user {
   background-color: #e6e6e6;
   align-self: flex-end;
   text-align: right;
-  align-items: flex-end;
 }
 
+/* ⌨️ Input Field */
 .input-area {
   display: flex;
   align-items: center;
@@ -87,6 +118,7 @@ input[type="text"] {
   margin-right: 10px;
 }
 
+/* 🔘 Send Button */
 button {
   background-color: #1a1a1a;
   color: white;
@@ -106,6 +138,7 @@ button:hover {
   background-color: #333;
 }
 
+/* 🟤 Dot before bot message */
 .dot {
   display: inline-block;
   width: 10px;
@@ -115,39 +148,6 @@ button:hover {
   margin-right: 8px;
 }
 
-.boulder {
-  display: block;
-  margin: 0 auto;
-  width: 90px;
-  transition: transform 10s linear;
-}
-
-.boulder.rolling {
-  animation: roll 10s linear infinite;
-}
-
-@keyframes roll {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-#rollingBoulder {
-  width: 60px;
-  height: auto;
-  margin-top: 10px;
-  animation: rollBoulder 12s linear infinite;
-  display: block;
-  margin-left: 0;
-  margin-right: auto;
-}
-
-@keyframes rollBoulder {
-  0% {
-    transform: translateX(0) rotate(0deg);
-  }
-  100% {
-    transform: translateX(100vw) rotate(360deg);
-  }
-}
 
 
 
