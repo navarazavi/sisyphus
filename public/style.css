@@ -114,23 +114,3 @@ button:hover {
   margin-right: 8px;
 }
 
-#rollingBoulder {
-  position: fixed;
-  bottom: 10px;
-  left: 0;
-  width: 50px;
-  height: auto;
-  animation: rollingBoulder 40s linear infinite alternate;
-  z-index: 10;
-}
-
-@keyframes rollingBoulder {
-  0% {
-    transform: translateX(0) rotate(0deg);
-  }
-  100% {
-    transform: translateX(95vw) rotate(720deg);
-  }
-}
-
-
