@@ -130,5 +130,24 @@ button:hover {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+#rollingBoulder {
+  width: 60px;
+  height: auto;
+  margin-top: 10px;
+  animation: rollBoulder 12s linear infinite;
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+@keyframes rollBoulder {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateX(100vw) rotate(360deg);
+  }
+}
+
 
 
