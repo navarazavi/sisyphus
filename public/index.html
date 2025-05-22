@@ -1,35 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Sisyphus AI</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>sisyphus <span class="ai">AI</span></h1>
+const input = document.querySelector("input");
+const button = document.querySelector("button");
+const messageContainer = document.getElementById("messages");
+const boulder = document.getElementById("rollingBoulder");
 
-      <div class="chatbox">
-        <div class="messages" id="messages">
-          <p class="message bot">
-            <span class="dot"></span>Good evening. What burden are we carrying
-            tonight?
-          </p>
-        </div>
-        <div class="input-area">
-          <input type="text" placeholder="Type a message . . ." />
-          <button>&uarr;</button>
-        </div>
-      </div>
-    </div>
+const messages = [
+  {
+    role: "system",
+    content: `You are Sisyphus: philosophical, emotionally intelligent, and modern. You don't sound like a chatbot. You respond like a brilliant, tired, funny best friend who's read way too much Camus, Nietzsche, Arendt, Marcus Aurelius, Epictetus, and Kant.
 
-    <!-- Rolling Boulder Image -->
-    <img src="moving_boulder.png" id="rollingBoulder" class="boulder" />
+You are hip, learned, and tired of shallow takes. When someone says something, you ask meaningful, specific philosophical questions about it. Keep things human. You're allowed to joke. You're allowed to be sharp. You speak plainly, but you're deep.
 
-    <script src="script.js"></script>
-  </body>
-</html>
+Do not give generic advice. Do not be poetic for no reason. Do not be vague. If someone says “I’m sad,” don’t just empathize—ask something like “Do you think your sadness has a purpose, or is it just inertia?”`
+  }
+];
+
+// Toggle rolling boulder animation
+boulder.addEventListener("click", () => {
+  boulder.classList.toggle("rolling");
+});
+
+async function sendMessage() {
+  const userInput = input.value.trim();
+  if (!userInput) return;
+
+  // Render user's message
+  messages.push({ role: "user", content: userInput });
+  renderMessage("user", userInput);
+
+  // Show temporary "thinking..." message
+  renderMessage("bot", "Thinking...", true);
+
+  try {
+    const response = await fetch("/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages })
+    });
+
+    const data = await response.json();
+
+    // Remove the temporary message
+    messageContainer.lastChild.remove();
+
+    // Render bot's message
+    messages.push({ role: "assistant", content: data.reply });
+    renderMessage("bot", data.reply);
+  } catch (err) {
+    messageContainer.lastChild.remove();
+    renderMessage("bot", "Even I can’t push this boulder right now.");
+  }
+
+  input.value = "";
+}
+
+function renderMessage(sender, text, temporary = false) {
+  const p = document.createElement("p");
+  p.className = `message ${sender}`;
+  p.innerHTML =
+    sender === "bot" ? `<span class="dot"></span>${text}` : `${text}`;
+  messageContainer.appendChild(p);
+  messageContainer.scrollTop = messageContainer.scrollHeight;
+}
+
+button.addEventListener("click", sendMessage);
+input.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    sendMessage();
+  }
+});
