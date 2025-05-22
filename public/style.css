@@ -130,6 +130,35 @@ button:hover {
   margin-right: 8px;
 }
 
+.boulder {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  width: 50px;
+  height: auto;
+  animation: rollBackAndForth 20s linear infinite;
+  z-index: 1;
+}
+
+@keyframes rollBackAndForth {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(100vw) rotate(360deg);
+  }
+  50% {
+    transform: translateX(100vw) rotate(360deg);
+  }
+  75% {
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
+
 
 
 
