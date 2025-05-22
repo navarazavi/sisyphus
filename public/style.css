@@ -4,10 +4,9 @@ body {
   color: #1a1a1a;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   height: 100vh;
   margin: 0;
-  padding-top: 40px;
 }
 
 .container {
@@ -19,7 +18,6 @@ body {
 h1 {
   font-size: 48px;
   letter-spacing: -1px;
-  margin-bottom: 10px;
 }
 
 .ai {
@@ -43,37 +41,36 @@ h1 {
 .messages {
   flex: 1;
   overflow-y: auto;
+  margin-bottom: 20px;
   padding-right: 10px;
   text-align: left;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 }
 
 .message {
-  display: inline-block;
   font-size: 15px;
+  margin-bottom: 24px;
   line-height: 1.4;
-  padding: 10px 14px;
-  border-radius: 16px;
-  max-width: 75%;
-  word-wrap: break-word;
-}
-
-.bot {
-  background-color: #f0f0f0;
-  align-self: flex-start;
 }
 
 .user {
-  background-color: #e6e6e6;
-  align-self: flex-end;
+  font-weight: bold;
+  color: #444;
+  text-align: right;
+  background-color: #e4e4e4;
+  padding: 10px 14px;
+  display: inline-block;
+  max-width: 75%;
+  border-radius: 20px;
+  margin-left: auto;
+}
+
+.bot {
+  color: #1a1a1a;
 }
 
 .input-area {
   display: flex;
   align-items: center;
-  margin-top: 10px;
 }
 
 input[type="text"] {
@@ -111,5 +108,29 @@ button:hover {
   background-color: #1a1a1a;
   border-radius: 50%;
   margin-right: 8px;
+}
+
+/* Rolling Boulder */
+.boulder {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 60px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.boulder.rolling {
+  animation: slowRoll 20s linear infinite;
+}
+
+@keyframes slowRoll {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
