@@ -4,21 +4,22 @@ body {
   color: #1a1a1a;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   height: 100vh;
   margin: 0;
+  padding-top: 40px;
 }
 
 .container {
-  max-width: 700px;
+  text-align: center;
+  max-width: 600px;
   width: 100%;
-  padding: 20px;
 }
 
 h1 {
   font-size: 48px;
   letter-spacing: -1px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .ai {
@@ -31,7 +32,8 @@ h1 {
   border: 2px solid #6c7a89;
   border-radius: 16px;
   padding: 20px;
-  height: 65vh;
+  margin-top: 30px;
+  height: 60vh;
   display: flex;
   flex-direction: column;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.03);
@@ -41,30 +43,37 @@ h1 {
 .messages {
   flex: 1;
   overflow-y: auto;
-  margin-bottom: 20px;
   padding-right: 10px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .message {
+  display: inline-block;
   font-size: 15px;
-  margin-bottom: 18px;
-  line-height: 1.6;
-  white-space: pre-wrap;
+  line-height: 1.4;
+  padding: 10px 14px;
+  border-radius: 16px;
+  max-width: 75%;
+  word-wrap: break-word;
 }
 
 .bot {
-  text-align: left;
+  background-color: #f0f0f0;
+  align-self: flex-start;
 }
 
 .user {
-  text-align: right;
-  font-weight: bold;
-  color: #444;
+  background-color: #e6e6e6;
+  align-self: flex-end;
 }
 
 .input-area {
   display: flex;
   align-items: center;
+  margin-top: 10px;
 }
 
 input[type="text"] {
@@ -85,10 +94,10 @@ button {
   height: 36px;
   font-size: 16px;
   cursor: pointer;
+  transition: background 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: background 0.3s ease;
 }
 
 button:hover {
@@ -103,5 +112,4 @@ button:hover {
   border-radius: 50%;
   margin-right: 8px;
 }
-
 
