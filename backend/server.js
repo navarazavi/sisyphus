@@ -1,34 +1,40 @@
-require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const { OpenAI } = require("openai");
+const dotenv = require("dotenv");
+const { Configuration, OpenAIApi } = require("openai");
+const path = require("path");
+
+dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 3000;
+
 app.use(cors());
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "public")));
 
-const openai = new OpenAI({
+const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
+const openai = new OpenAIApi(configuration);
 
 app.post("/chat", async (req, res) => {
-  const messages = req.body.messages;
+  const { messages } = req.body;
 
   try {
-    const chatCompletion = await openai.chat.completions.create({
-      model: "gpt-4", // or "gpt-3.5-turbo" if you prefer
-      messages,
+    const completion = await openai.createChatCompletion({
+      model: "gpt-3.5-turbo", // or "gpt-4" if your account has access
+      messages: messages,
     });
 
-    const reply = chatCompletion.choices[0].message.content;
+    const reply = completion.data.choices[0].message.content;
     res.json({ reply });
   } catch (err) {
-    console.error("OpenAI error:", err.response ? err.response.data : err.message);
-    res.status(500).json({ reply: "Something broke in the Underworld. Try again later." });
+    console.error("OpenAI error:", err.message || err);
+    res.status(500).json({ error: "Failed to fetch response from OpenAI." });
   }
 });
 
-const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`🪨 Sisyphus rolling on port ${PORT}`);
 });
