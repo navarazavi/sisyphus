@@ -117,9 +117,9 @@ button:hover {
 /* 🎯 ROLLING BOULDER */
 #rollingBoulder {
   position: fixed;
-  bottom: 3px;
+  bottom: 0.5px;
   left: 0;
-  width: 60px;
+  width: 70px;
   height: auto;
   animation: rollBoulder 30s linear infinite alternate;
   z-index: 999;
