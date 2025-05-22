@@ -1,6 +1,7 @@
 const input = document.querySelector("input");
 const button = document.querySelector("button");
 const messageContainer = document.getElementById("messages");
+const boulder = document.getElementById("rollingBoulder");
 
 const messages = [
   {
@@ -13,15 +14,21 @@ Do not give generic advice. Do not be poetic for no reason. Do not be vague. If 
   }
 ];
 
+// Toggle rolling boulder animation
+boulder.addEventListener("click", () => {
+  boulder.classList.toggle("rolling");
+});
+
 async function sendMessage() {
   const userInput = input.value.trim();
   if (!userInput) return;
 
+  // Render user's message
   messages.push({ role: "user", content: userInput });
   renderMessage("user", userInput);
 
-  // Typing indicator
-  renderMessage("bot", '<div class="typing"><span></span><span></span><span></span></div>', true);
+  // Show temporary "thinking..." message
+  renderMessage("bot", "Thinking...", true);
 
   try {
     const response = await fetch("/chat", {
@@ -32,9 +39,10 @@ async function sendMessage() {
 
     const data = await response.json();
 
-    // Remove typing
+    // Remove the temporary message
     messageContainer.lastChild.remove();
 
+    // Render bot's message
     messages.push({ role: "assistant", content: data.reply });
     renderMessage("bot", data.reply);
   } catch (err) {
@@ -48,9 +56,8 @@ async function sendMessage() {
 function renderMessage(sender, text, temporary = false) {
   const p = document.createElement("p");
   p.className = `message ${sender}`;
-  p.innerHTML = sender === "bot"
-    ? `<span class="dot"></span>${text}`
-    : `${text}`;
+  p.innerHTML =
+    sender === "bot" ? `<span class="dot"></span>${text}` : `${text}`;
   messageContainer.appendChild(p);
   messageContainer.scrollTop = messageContainer.scrollHeight;
 }
@@ -61,4 +68,5 @@ input.addEventListener("keypress", function (e) {
     sendMessage();
   }
 });
+
 
