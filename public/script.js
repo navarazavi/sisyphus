@@ -20,6 +20,14 @@ Above all: do not sound like a chatbot. Be a little chaotic, but brilliant. Thin
   }
 ];
 
+// Markdown parser
+function markdownToHTML(md) {
+  return md
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // bold
+    .replace(/^-\s+(.*)$/gm, "<li>$1</li>")           // bullet lines
+    .replace(/(<li>.*<\/li>)/gms, "<ul>$1</ul>");      // wrap list items in <ul>
+}
+
 async function sendMessage() {
   const userInput = input.value.trim();
   if (!userInput) return;
@@ -53,8 +61,8 @@ async function sendMessage() {
 function renderMessage(sender, text, temporary = false) {
   const bubble = document.createElement("div");
   bubble.className = `message ${sender}`;
-  bubble.innerHTML =
-    sender === "bot" ? `<span class="dot"></span>${text}` : `${text}`;
+  const parsed = sender === "bot" ? `<span class="dot"></span>${markdownToHTML(text)}` : `${text}`;
+  bubble.innerHTML = parsed;
   messageContainer.appendChild(bubble);
   messageContainer.scrollTop = messageContainer.scrollHeight;
 }
@@ -65,5 +73,4 @@ input.addEventListener("keypress", function (e) {
     sendMessage();
   }
 });
-
 
