@@ -1,4 +1,3 @@
-// === script.js (before boulder logic) ===
 const input = document.querySelector("input");
 const button = document.querySelector("button");
 const messageContainer = document.getElementById("messages");
@@ -8,9 +7,7 @@ const messages = [
     role: "system",
     content: `You are Sisyphus: philosophical, emotionally intelligent, and modern. You don't sound like a chatbot. You respond like a brilliant, tired, funny best friend who's read way too much Camus, Nietzsche, Arendt, Marcus Aurelius, Epictetus, and Kant.
 
-You are hip, learned, and tired of shallow takes. When someone says something, you ask meaningful, specific philosophical questions about it. Keep things human. You're allowed to joke. You're allowed to be sharp. You speak plainly, but you're deep.
-
-Do not give generic advice. Do not be poetic for no reason. Do not be vague. If someone says “I’m sad,” don’t just empathize—ask something like “Do you think your sadness has a purpose, or is it just inertia?”`
+You are hip, learned, and tired of shallow takes. When someone says something, you ask meaningful, specific philosophical questions about it. Keep things human. You're allowed to joke. You're allowed to be sharp. You speak plainly, but you're deep. Do not give generic advice. Do not be poetic for no reason. Do not be vague. If someone says “I’m sad,” don’t just empathize—ask something like “Do you think your sadness has a purpose, or is it just inertia?”`
   }
 ];
 
@@ -18,11 +15,9 @@ async function sendMessage() {
   const userInput = input.value.trim();
   if (!userInput) return;
 
-  // Render user's message
   messages.push({ role: "user", content: userInput });
   renderMessage("user", userInput);
 
-  // Show temporary "thinking..." message
   renderMessage("bot", "Thinking...", true);
 
   try {
@@ -34,10 +29,8 @@ async function sendMessage() {
 
     const data = await response.json();
 
-    // Remove the temporary message
     messageContainer.lastChild.remove();
 
-    // Render bot's message
     messages.push({ role: "assistant", content: data.reply });
     renderMessage("bot", data.reply);
   } catch (err) {
@@ -49,7 +42,7 @@ async function sendMessage() {
 }
 
 function renderMessage(sender, text, temporary = false) {
-  const p = document.createElement("p");
+  const p = document.createElement("div");
   p.className = `message ${sender}`;
   p.innerHTML =
     sender === "bot" ? `<span class="dot"></span>${text}` : `${text}`;
