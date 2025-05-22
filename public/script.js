@@ -20,7 +20,8 @@ async function sendMessage() {
   messages.push({ role: "user", content: userInput });
   renderMessage("user", userInput);
 
-  renderMessage("bot", "Thinking...", true);
+  // Typing indicator
+  renderMessage("bot", '<div class="typing"><span></span><span></span><span></span></div>', true);
 
   try {
     const response = await fetch("/chat", {
@@ -30,6 +31,8 @@ async function sendMessage() {
     });
 
     const data = await response.json();
+
+    // Remove typing
     messageContainer.lastChild.remove();
 
     messages.push({ role: "assistant", content: data.reply });
@@ -54,5 +57,8 @@ function renderMessage(sender, text, temporary = false) {
 
 button.addEventListener("click", sendMessage);
 input.addEventListener("keypress", function (e) {
-  if (e.key === "Enter") sendMessage();
+  if (e.key === "Enter") {
+    sendMessage();
+  }
 });
+
