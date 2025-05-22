@@ -1,7 +1,7 @@
+// === script.js (before boulder logic) ===
 const input = document.querySelector("input");
 const button = document.querySelector("button");
 const messageContainer = document.getElementById("messages");
-const boulder = document.getElementById("rollingBoulder");
 
 const messages = [
   {
@@ -13,11 +13,6 @@ You are hip, learned, and tired of shallow takes. When someone says something, y
 Do not give generic advice. Do not be poetic for no reason. Do not be vague. If someone says “I’m sad,” don’t just empathize—ask something like “Do you think your sadness has a purpose, or is it just inertia?”`
   }
 ];
-
-// Toggle rolling boulder animation
-boulder.addEventListener("click", () => {
-  boulder.classList.toggle("rolling");
-});
 
 async function sendMessage() {
   const userInput = input.value.trim();
@@ -68,5 +63,4 @@ input.addEventListener("keypress", function (e) {
     sendMessage();
   }
 });
-
 
