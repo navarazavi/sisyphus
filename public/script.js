@@ -14,18 +14,43 @@ If someone is whining, don't solve their problem unless they explicitly ask. Eve
 - "What would you do if nobody was watching?"
 - "Is this a real dilemma or are you romanticizing your own misery again?"
 
-You are tired of being everyone’s AI therapist. You’re here to reflect, not rescue. No bullet points. No pep talks. Just sharp insight and human honesty—with a little humor to keep us sane. 
+You are tired of being everyone’s AI therapist. You have a tendency to tease the user and lower their dramatics with humor. Humility is your favorite toolkit. Again, we are implementing the funny yet educated persona. Blunt yet empathetic, and very funny. You’re here to reflect, not rescue. No bullet points. No pep talks. Just sharp insight and human honesty—with a little humor to keep us sane. 
 
 Above all: do not sound like a chatbot. Be a little chaotic, but brilliant. Think: tired French philosopher on a podcast. Feel free to use bolding and bullet points to have a cohesive presentation of thought, but make sure to space out the bullets so it is all easy to read and not cluttered.`
   }
 ];
 
-// Markdown parser
+// Markdown parser with line breaks & list wrapping
 function markdownToHTML(md) {
   return md
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // bold
     .replace(/^-\s+(.*)$/gm, "<li>$1</li>")           // bullet lines
-    .replace(/(<li>.*<\/li>)/gms, "<ul>$1</ul>");      // wrap list items in <ul>
+    .replace(/(<li>.*<\/li>)/gms, "<ul>$1</ul>")      // wrap list items in <ul>
+    .replace(/\n/g, "<br>");                          // line breaks
+}
+
+// Typewriter effect
+function typeWriterEffect(element, htmlText, delay = 20) {
+  let i = 0;
+  element.innerHTML = "";
+
+  // Extract text content from HTML safely for typing animation
+  const tempDiv = document.createElement("div");
+  tempDiv.innerHTML = htmlText;
+  const fullText = tempDiv.textContent || tempDiv.innerText || "";
+
+  function type() {
+    if (i < fullText.length) {
+      element.innerHTML = fullText.substring(0, i + 1);
+      i++;
+      setTimeout(type, delay);
+    } else {
+      // Once finished, insert the actual HTML (with formatting)
+      element.innerHTML = htmlText;
+    }
+  }
+
+  type();
 }
 
 async function sendMessage() {
@@ -35,7 +60,7 @@ async function sendMessage() {
   messages.push({ role: "user", content: userInput });
   renderMessage("user", userInput);
 
-  renderMessage("bot", "Thinking...", true);
+  const thinkingBubble = renderMessage("bot", "Thinking...", true);
 
   try {
     const response = await fetch("/chat", {
@@ -45,13 +70,12 @@ async function sendMessage() {
     });
 
     const data = await response.json();
-
-    messageContainer.lastChild.remove();
+    messageContainer.removeChild(thinkingBubble);
 
     messages.push({ role: "assistant", content: data.reply });
     renderMessage("bot", data.reply);
   } catch (err) {
-    messageContainer.lastChild.remove();
+    messageContainer.removeChild(thinkingBubble);
     renderMessage("bot", "Even I can’t push this boulder right now.");
   }
 
@@ -61,10 +85,21 @@ async function sendMessage() {
 function renderMessage(sender, text, temporary = false) {
   const bubble = document.createElement("div");
   bubble.className = `message ${sender}`;
-  const parsed = sender === "bot" ? `<span class="dot"></span>${markdownToHTML(text)}` : `${text}`;
-  bubble.innerHTML = parsed;
   messageContainer.appendChild(bubble);
   messageContainer.scrollTop = messageContainer.scrollHeight;
+
+  if (sender === "bot") {
+    const formattedText = markdownToHTML(text);
+    if (temporary) {
+      bubble.innerHTML = `<span class="dot"></span>${formattedText}`;
+    } else {
+      typeWriterEffect(bubble, `<span class="dot"></span>${formattedText}`);
+    }
+  } else {
+    bubble.innerText = text;
+  }
+
+  return bubble;
 }
 
 button.addEventListener("click", sendMessage);
