@@ -12,9 +12,11 @@ body {
 
 .container {
   text-align: center;
-  max-width: 600px;
+  max-width: 850px; /* bump this up from 600px */
   width: 100%;
+  margin: 0 auto; /* ensures it's still centered */
 }
+
 
 h1 {
   font-size: 48px;
