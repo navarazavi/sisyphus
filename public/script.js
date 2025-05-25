@@ -32,73 +32,28 @@ Above all: do not sound like a chatbot. Be a little chaotic, but brilliant. Thin
 
 function markdownToHTML(md) {
   let html = md
-    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // bold
-    .replace(/_(.*?)_/g, "<em>$1</em>");              // italics (optional)
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
+    .replace(/_(.*?)_/g, "<em>$1</em>");
 
-  // Convert numbered lists
-  html = html.replace(/(?:^|\n)(\d+\..*(?:\n\d+\..*)*)/g, match => {
-    const items = match.trim().split(/\n/).map(item =>
-      `<li>${item.replace(/^\d+\.\s*/, '')}</li>`
+  // Combine and format numbered lists
+  html = html.replace(/((?:^\d+\.\s.*\n?)+)/gm, match => {
+    const items = match.trim().split(/\n/).map(line =>
+      `<li>${line.replace(/^\d+\.\s*/, '')}</li>`
     ).join("");
     return `<ol>${items}</ol>`;
   });
 
-  // Convert bullet lists
-  html = html.replace(/(?:^|\n)(-\s.*(?:\n-\s.*)*)/g, match => {
-    const items = match.trim().split(/\n/).map(item =>
-      `<li>${item.replace(/^-+\s*/, '')}</li>`
+  // Combine and format bullet lists
+  html = html.replace(/((?:^[-*]\s.*\n?)+)/gm, match => {
+    const items = match.trim().split(/\n/).map(line =>
+      `<li>${line.replace(/^[-*]\s*/, '')}</li>`
     ).join("");
     return `<ul>${items}</ul>`;
   });
 
-  // Final cleanup: double <br>s between paragraphs, single <br> for soft breaks
-  html = html.replace(/\n{2,}/g, "<br><br>").replace(/\n/g, "<br>");
-
+  html = html.replace(/\n/g, "<br>");
   return html;
 }
-
-// Hybrid typewriter effect (plain text first, then full markdown)
-function typeWriterEffect(element, htmlText, baseDelay = 20) {
-  const tempDiv = document.createElement("div");
-  tempDiv.innerHTML = htmlText;
-  let rawText = tempDiv.textContent || tempDiv.innerText || "";
-
-  // 👇 replace * or - bullet markers with •
-  rawText = rawText.replace(/^[-*]\s/gm, "• ");
-
-  const dot = document.createElement("span");
-  dot.className = "dot";
-
-  const typingSpan = document.createElement("span");
-  typingSpan.className = "typewriter-temp";
-
-  element.innerHTML = "";
-  element.appendChild(dot);
-  element.appendChild(typingSpan);
-
-  let i = 0;
-
-  function getPause(char) {
-    if (".!?".includes(char)) return 300;
-    if (",;-".includes(char)) return 100;
-    return baseDelay;
-  }
-
-  function type() {
-    if (i < rawText.length) {
-      typingSpan.textContent += rawText[i];
-      const pause = getPause(rawText[i]);
-      i++;
-      setTimeout(type, pause);
-    } else {
-      // Done typing → swap in final formatted markdown
-      element.innerHTML = `<span class="dot"></span>${htmlText}`;
-    }
-  }
-
-  type();
-}
-
 
 async function sendMessage() {
   const userInput = input.value.trim();
@@ -131,18 +86,14 @@ async function sendMessage() {
 
 function renderMessage(sender, text, temporary = false) {
   const bubble = document.createElement("div");
-  bubble.classList.add("pretty-markdown");
   bubble.className = `message ${sender}`;
+  bubble.classList.add("pretty-markdown");
   messageContainer.appendChild(bubble);
   messageContainer.scrollTop = messageContainer.scrollHeight;
 
   if (sender === "bot") {
     const formattedText = markdownToHTML(text);
-    if (temporary) {
-      bubble.innerHTML = `<span class="dot"></span>${formattedText}`;
-    } else {
-      typeWriterEffect(bubble, `<span class="dot"></span>${formattedText}`);
-    }
+    bubble.innerHTML = `<span class="dot"></span>${formattedText}`;
   } else {
     bubble.innerText = text;
   }
@@ -156,3 +107,4 @@ input.addEventListener("keypress", function (e) {
     sendMessage();
   }
 });
+
