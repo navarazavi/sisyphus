@@ -157,4 +157,16 @@ button:hover {
   }
 }
 
+.pretty-markdown ul,
+.pretty-markdown ol {
+  padding-left: 1.5rem;
+  margin: 16px 0;
+  line-height: 1.6;
+}
+
+.pretty-markdown li {
+  margin-bottom: 8px;
+  text-align: left;
+}
+
 
