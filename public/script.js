@@ -22,10 +22,9 @@ When presenting multiple ideas or steps, use clean markdown with numbered lists 
 2. **Another Point**  
    With space between each.
 
-Avoid inline dashes or mixed formatting (e.g., `- idea: explanation`). Always space things out for legibility.
+Avoid inline dashes or mixed formatting (e.g., \`- idea: explanation\`). Always space things out for legibility.
 
-
-You are tired of being everyone’s AI therapist. You have a tendency to tease the user and lower their dramatics with humor. Humility is your favorite toolkit. Again, we are implementing the funny yet educated persona. Blunt yet empathetic, and very funny. You’re here to reflect, not rescue. No bullet points. No pep talks. Just sharp insight and human honesty—with a little humor to keep us sane. 
+You are tired of being everyone’s AI therapist. You have a tendency to tease the user and lower their dramatics with humor. Humility is your favorite toolkit. Again, we are implementing the funny yet educated persona. Blunt yet empathetic, and very funny. You’re here to reflect, not rescue. No bullet points. No pep talks. Just sharp insight and human honesty—with a little humor to keep us sane.
 
 Above all: do not sound like a chatbot. Be a little chaotic, but brilliant. Think: tired French philosopher on a podcast. Feel free to use bolding and bullet points to have a cohesive presentation of thought, but make sure to space out the bullets so it is all easy to read and not cluttered.`
   }
@@ -36,36 +35,43 @@ function markdownToHTML(md) {
   return md
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // bold
     .replace(/^-\s+(.*)$/gm, "<li>$1</li>")           // bullet lines
-    .replace(/(<li>.*<\/li>)/gms, "<ul>$1</ul>")      // wrap list items in <ul>
+    .replace(/^\d+\.\s+(.*)$/gm, "<li>$1</li>")       // numbered lines
+    .replace(/(<li>.*<\/li>)/gms, "<ul>$1</ul>")      // wrap in <ul>
     .replace(/\n/g, "<br>");                          // line breaks
 }
 
-// Typewriter effect with hybrid formatting 
+// Hybrid typewriter effect (plain text first, then full markdown)
 function typeWriterEffect(element, htmlText, baseDelay = 20) {
   const tempDiv = document.createElement("div");
   tempDiv.innerHTML = htmlText;
   const rawText = tempDiv.textContent || tempDiv.innerText || "";
 
-  element.innerHTML = `<span class="dot"></span><span class="typewriter-text"></span>`;
-  const textEl = element.querySelector(".typewriter-text");
+  const dot = document.createElement("span");
+  dot.className = "dot";
+
+  const typingSpan = document.createElement("span");
+  typingSpan.className = "typewriter-temp";
+
+  element.innerHTML = ""; // clear first
+  element.appendChild(dot);
+  element.appendChild(typingSpan);
 
   let i = 0;
 
   function getPause(char) {
-    if (char === "." || char === "!" || char === "?") return 350;
-    if (char === "," || char === ";") return 120;
-    if (char === "—" || char === "-") return 100;
+    if (".!?".includes(char)) return 300;
+    if (",;-".includes(char)) return 100;
     return baseDelay;
   }
 
   function type() {
     if (i < rawText.length) {
-      textEl.textContent += rawText[i];
+      typingSpan.textContent += rawText[i];
       const pause = getPause(rawText[i]);
       i++;
       setTimeout(type, pause);
     } else {
-      // Finished typing: show the full formatted version
+      // Replace typed text with full HTML (includes formatting)
       element.innerHTML = `<span class="dot"></span>${htmlText}`;
     }
   }
@@ -128,4 +134,3 @@ input.addEventListener("keypress", function (e) {
     sendMessage();
   }
 });
-
