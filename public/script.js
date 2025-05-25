@@ -31,22 +31,24 @@ function markdownToHTML(md) {
 
 // Typewriter effect
 function typeWriterEffect(element, htmlText, delay = 20) {
-  let i = 0;
-  element.innerHTML = "";
-
-  // Extract text content from HTML safely for typing animation
   const tempDiv = document.createElement("div");
   tempDiv.innerHTML = htmlText;
   const fullText = tempDiv.textContent || tempDiv.innerText || "";
 
+  let i = 0;
+  element.innerHTML = "";
+  element.style.opacity = "1";
+
   function type() {
     if (i < fullText.length) {
-      element.innerHTML = fullText.substring(0, i + 1);
+      element.textContent = fullText.substring(0, i + 1);
       i++;
       setTimeout(type, delay);
     } else {
-      // Once finished, insert the actual HTML (with formatting)
-      element.innerHTML = htmlText;
+      // Typing done – replace with formatted markdown
+      setTimeout(() => {
+        element.innerHTML = htmlText;
+      }, 100); // optional delay for drama
     }
   }
 
