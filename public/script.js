@@ -35,25 +35,30 @@ function markdownToHTML(md) {
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
     .replace(/_(.*?)_/g, "<em>$1</em>");
 
-  // Combine and format numbered lists
-  html = html.replace(/((?:^\d+\.\s.*\n?)+)/gm, match => {
-    const items = match.trim().split(/\n/).map(line =>
-      `<li>${line.replace(/^\d+\.\s*/, '')}</li>`
-    ).join("");
-    return `<ol>${items}</ol>`;
-  });
+  // Fix: group only ONE ol block for all consecutive numbered items
+  html = html.replace(
+    /(?:^|\n)((?:\d+\..*(?:\n|$))+)/g,
+    match => {
+      const items = match.trim().split(/\n/).map(line =>
+        `<li>${line.replace(/^\d+\.\s*/, '')}</li>`
+      ).join("");
+      return `<ol>${items}</ol>`;
+    }
+  );
 
-  // Combine and format bullet lists
-  html = html.replace(/((?:^[-*]\s.*\n?)+)/gm, match => {
-    const items = match.trim().split(/\n/).map(line =>
-      `<li>${line.replace(/^[-*]\s*/, '')}</li>`
-    ).join("");
-    return `<ul>${items}</ul>`;
-  });
+  html = html.replace(
+    /(?:^|\n)((?:[-*]\s.*(?:\n|$))+)/g,
+    match => {
+      const items = match.trim().split(/\n/).map(line =>
+        `<li>${line.replace(/^[-*]\s*/, '')}</li>`
+      ).join("");
+      return `<ul>${items}</ul>`;
+    }
+  );
 
-  html = html.replace(/\n/g, "<br>");
-  return html;
+  return html.replace(/\n/g, "<br>");
 }
+
 
 async function sendMessage() {
   const userInput = input.value.trim();
