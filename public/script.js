@@ -29,26 +29,33 @@ function markdownToHTML(md) {
     .replace(/\n/g, "<br>");                          // line breaks
 }
 
-// Typewriter effect
-function typeWriterEffect(element, htmlText, delay = 20) {
+// Typewriter effect with hybrid formatting 
+function typeWriterEffect(element, htmlText, baseDelay = 20) {
   const tempDiv = document.createElement("div");
   tempDiv.innerHTML = htmlText;
-  const fullText = tempDiv.textContent || tempDiv.innerText || "";
+  const rawText = tempDiv.textContent || tempDiv.innerText || "";
+
+  element.innerHTML = `<span class="dot"></span><span class="typewriter-text"></span>`;
+  const textEl = element.querySelector(".typewriter-text");
 
   let i = 0;
-  element.innerHTML = "";
-  element.style.opacity = "1";
+
+  function getPause(char) {
+    if (char === "." || char === "!" || char === "?") return 350;
+    if (char === "," || char === ";") return 120;
+    if (char === "—" || char === "-") return 100;
+    return baseDelay;
+  }
 
   function type() {
-    if (i < fullText.length) {
-      element.textContent = fullText.substring(0, i + 1);
+    if (i < rawText.length) {
+      textEl.textContent += rawText[i];
+      const pause = getPause(rawText[i]);
       i++;
-      setTimeout(type, delay);
+      setTimeout(type, pause);
     } else {
-      // Typing done – replace with formatted markdown
-      setTimeout(() => {
-        element.innerHTML = htmlText;
-      }, 100); // optional delay for drama
+      // Finished typing: show the full formatted version
+      element.innerHTML = `<span class="dot"></span>${htmlText}`;
     }
   }
 
