@@ -65,7 +65,7 @@ async function sendMessage() {
   const thinkingBubble = renderMessage("bot", "Thinking...", true);
 
   try {
-    const response = await fetch("http://localhost:3000/chat", {
+    const response = await fetch("/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ messages })
@@ -89,6 +89,7 @@ function renderMessage(sender, text, temporary = false) {
   bubble.className = `message ${sender}`;
   bubble.classList.add("pretty-markdown");
   messageContainer.appendChild(bubble);
+  messageContainer.scrollTop = messageContainer.scrollHeight;
 
   if (sender === "bot") {
     const formattedText = markdownToHTML(text);
@@ -97,14 +98,10 @@ function renderMessage(sender, text, temporary = false) {
     bubble.innerText = text;
   }
 
-  // 💅 Auto-scroll to bottom
-  messageContainer.scrollTop = messageContainer.scrollHeight;
-
   return bubble;
 }
 
 button.addEventListener("click", sendMessage);
-
 input.addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
     sendMessage();
