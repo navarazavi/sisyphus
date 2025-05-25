@@ -32,31 +32,21 @@ Above all: do not sound like a chatbot. Be a little chaotic, but brilliant. Thin
 
 function markdownToHTML(md) {
   let html = md
-    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-    .replace(/_(.*?)_/g, "<em>$1</em>");
+    .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")  // bold
+    .replace(/_(.*?)_/g, "<em>$1</em>");               // italics
 
-  // Fix: group only ONE ol block for all consecutive numbered items
-  html = html.replace(
-    /(?:^|\n)((?:\d+\..*(?:\n|$))+)/g,
-    match => {
-      const items = match.trim().split(/\n/).map(line =>
-        `<li>${line.replace(/^\d+\.\s*/, '')}</li>`
-      ).join("");
-      return `<ol>${items}</ol>`;
-    }
-  );
+  // 🔥 ONLY handle bullet points (- or *), treat everything else as plain text
+  html = html.replace(/((?:^[-*]\s.*(?:\n|$))+)/gm, match => {
+    const items = match.trim().split(/\n/).map(line =>
+      `<li>${line.replace(/^[-*]\s*/, '')}</li>`
+    ).join("");
+    return `<ul>${items}</ul>`;
+  });
 
-  html = html.replace(
-    /(?:^|\n)((?:[-*]\s.*(?:\n|$))+)/g,
-    match => {
-      const items = match.trim().split(/\n/).map(line =>
-        `<li>${line.replace(/^[-*]\s*/, '')}</li>`
-      ).join("");
-      return `<ul>${items}</ul>`;
-    }
-  );
+  // Optional: replace double newlines with paragraph breaks
+  html = html.replace(/\n{2,}/g, "<br><br>").replace(/\n/g, "<br>");
 
-  return html.replace(/\n/g, "<br>");
+  return html;
 }
 
 
