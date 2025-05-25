@@ -65,7 +65,7 @@ async function sendMessage() {
   const thinkingBubble = renderMessage("bot", "Thinking...", true);
 
   try {
-    const response = await fetch("/chat", {
+    const response = await fetch("http://localhost:3000/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ messages })
