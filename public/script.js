@@ -102,3 +102,12 @@ function renderMessage(sender, text, temporary = false) {
 
   return bubble;
 }
+
+button.addEventListener("click", sendMessage);
+
+input.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    sendMessage();
+  }
+});
+
