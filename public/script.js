@@ -30,21 +30,41 @@ Above all: do not sound like a chatbot. Be a little chaotic, but brilliant. Thin
   }
 ];
 
-// Markdown parser with line breaks & list wrapping
 function markdownToHTML(md) {
-  return md
+  let html = md
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>") // bold
-    .replace(/^-\s+(.*)$/gm, "<li>$1</li>")           // bullet lines
-    .replace(/^\d+\.\s+(.*)$/gm, "<li>$1</li>")       // numbered lines
-    .replace(/(<li>.*<\/li>)/gms, "<ul>$1</ul>")      // wrap in <ul>
-    .replace(/\n/g, "<br>");                          // line breaks
+    .replace(/_(.*?)_/g, "<em>$1</em>");              // italics (optional)
+
+  // Convert numbered lists
+  html = html.replace(/(?:^|\n)(\d+\..*(?:\n\d+\..*)*)/g, match => {
+    const items = match.trim().split(/\n/).map(item =>
+      `<li>${item.replace(/^\d+\.\s*/, '')}</li>`
+    ).join("");
+    return `<ol>${items}</ol>`;
+  });
+
+  // Convert bullet lists
+  html = html.replace(/(?:^|\n)(-\s.*(?:\n-\s.*)*)/g, match => {
+    const items = match.trim().split(/\n/).map(item =>
+      `<li>${item.replace(/^-+\s*/, '')}</li>`
+    ).join("");
+    return `<ul>${items}</ul>`;
+  });
+
+  // Final cleanup: double <br>s between paragraphs, single <br> for soft breaks
+  html = html.replace(/\n{2,}/g, "<br><br>").replace(/\n/g, "<br>");
+
+  return html;
 }
 
 // Hybrid typewriter effect (plain text first, then full markdown)
 function typeWriterEffect(element, htmlText, baseDelay = 20) {
   const tempDiv = document.createElement("div");
   tempDiv.innerHTML = htmlText;
-  const rawText = tempDiv.textContent || tempDiv.innerText || "";
+  let rawText = tempDiv.textContent || tempDiv.innerText || "";
+
+  // 👇 replace * or - bullet markers with •
+  rawText = rawText.replace(/^[-*]\s/gm, "• ");
 
   const dot = document.createElement("span");
   dot.className = "dot";
@@ -52,7 +72,7 @@ function typeWriterEffect(element, htmlText, baseDelay = 20) {
   const typingSpan = document.createElement("span");
   typingSpan.className = "typewriter-temp";
 
-  element.innerHTML = ""; // clear first
+  element.innerHTML = "";
   element.appendChild(dot);
   element.appendChild(typingSpan);
 
@@ -71,13 +91,14 @@ function typeWriterEffect(element, htmlText, baseDelay = 20) {
       i++;
       setTimeout(type, pause);
     } else {
-      // Replace typed text with full HTML (includes formatting)
+      // Done typing → swap in final formatted markdown
       element.innerHTML = `<span class="dot"></span>${htmlText}`;
     }
   }
 
   type();
 }
+
 
 async function sendMessage() {
   const userInput = input.value.trim();
@@ -110,6 +131,7 @@ async function sendMessage() {
 
 function renderMessage(sender, text, temporary = false) {
   const bubble = document.createElement("div");
+  bubble.classList.add("pretty-markdown");
   bubble.className = `message ${sender}`;
   messageContainer.appendChild(bubble);
   messageContainer.scrollTop = messageContainer.scrollHeight;
