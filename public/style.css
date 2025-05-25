@@ -44,7 +44,6 @@ h1:hover .ai {
   display: inline;
 }
 
-
 .chatbox {
   background: white;
   border: 2px solid #6c7a89;
@@ -61,7 +60,6 @@ h1:hover .ai {
   margin-right: auto;
 }
 
-
 .messages {
   flex: 1;
   overflow-y: auto;
@@ -69,6 +67,7 @@ h1:hover .ai {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  scroll-behavior: smooth; /* 💅 Auto-scroll looks smooth */
 }
 
 .message {
@@ -157,10 +156,11 @@ button:hover {
   }
 }
 
+/* 📝 Pretty Markdown Styling */
 .pretty-markdown ul,
 .pretty-markdown ol {
-  padding-left: 1.5rem;
   margin: 16px 0;
+  padding-left: 1.5rem;
   line-height: 1.6;
 }
 
@@ -171,11 +171,11 @@ button:hover {
 
 .pretty-markdown ol {
   list-style: decimal;
-  margin-left: 1.5rem;
-  padding-left: 1rem;
+  list-style-position: outside;
 }
 
-.pretty-markdown ol li {
+.pretty-markdown ul {
+  list-style: disc;
   list-style-position: outside;
 }
 
