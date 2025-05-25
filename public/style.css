@@ -169,4 +169,13 @@ button:hover {
   text-align: left;
 }
 
+.pretty-markdown ol {
+  list-style: decimal;
+  margin-left: 1.5rem;
+  padding-left: 1rem;
+}
+
+.pretty-markdown ol li {
+  list-style-position: outside;
+}
 
