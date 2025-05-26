@@ -2,25 +2,25 @@ body {
   background-color: #f2f2f2;
   font-family: "Space Grotesk", sans-serif;
   color: #1a1a1a;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100vh;
   margin: 0;
-  padding-top: 40px;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .container {
   text-align: center;
-  max-width: 1700px;
   width: 100%;
-  margin: 0 auto;
+  padding-top: 80px; /* space for ridge and boulder */
 }
 
 h1 {
   font-size: 48px;
   letter-spacing: -1px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   transition: transform 0.3s ease;
   display: inline-block;
 }
@@ -44,30 +44,17 @@ h1:hover .ai {
   display: inline;
 }
 
-.chatbox {
-  background: white;
-  border: 2px solid #6c7a89;
-  border-radius: 16px;
-  padding: 20px;
-  margin-top: 30px;
-  height: 61.5vh;
-  max-width: 960px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .messages {
   flex: 1;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
   overflow-y: auto;
-  padding-right: 10px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  scroll-behavior: smooth; /* 💅 Auto-scroll looks smooth */
+  scroll-behavior: smooth;
 }
 
 .message {
@@ -95,7 +82,10 @@ h1:hover .ai {
 .input-area {
   display: flex;
   align-items: center;
-  margin-top: 10px;
+  width: 100%;
+  max-width: 960px;
+  margin: 20px auto 0 auto;
+  padding: 0 20px;
 }
 
 input[type="text"] {
@@ -135,12 +125,22 @@ button:hover {
   margin-right: 8px;
 }
 
-/* 🎯 ROLLING BOULDER */
+/* 🌿 RIDGE + ROLLING BOULDER */
+.ridge {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 4px;
+  background-color: #1a1a1a;
+  z-index: 998;
+}
+
 #rollingBoulder {
   position: fixed;
-  bottom: 0.5px;
+  top: -22px;
   left: 0;
-  width: 70px;
+  width: 50px;
   height: auto;
   animation: rollBoulder 30s linear infinite alternate;
   z-index: 999;
@@ -152,7 +152,7 @@ button:hover {
     transform: translateX(0) rotate(0deg);
   }
   100% {
-    transform: translateX(95vw) rotate(720deg);
+    transform: translateX(calc(100vw - 60px)) rotate(720deg);
   }
 }
 
@@ -178,4 +178,5 @@ button:hover {
   list-style: disc;
   list-style-position: outside;
 }
+
 
