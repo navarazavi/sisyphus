@@ -11,28 +11,27 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Ridge line with rolling boulder -->
+    <div class="ridge"></div>
+    <img id="rollingBoulder" src="moving_boulder.png" alt="Rolling Boulder" />
+
+    <!-- Content container -->
     <div class="container">
       <h1>sisyphus <span class="ai">AI</span></h1>
-      <div class="chatbox">
-        <div class="messages" id="messages">
-          <div class="message bot">
-            <span class="dot"></span>Greetings, friend! What burden are we carrying
-            today?
-          </div>
-        </div>
-        <div class="input-area">
-          <input type="text" placeholder="Type a message . . ." />
-          <button>&uarr;</button>
+
+      <!-- Chat messages -->
+      <div class="messages" id="messages">
+        <div class="message bot">
+          <span class="dot"></span>Greetings, friend! What burden are we carrying today?
         </div>
       </div>
-    </div>
 
-    <!-- 🎯 BOULDER IMG RIGHT HERE -->
-    <img
-      id="rollingBoulder"
-      src="moving_boulder.png"
-      alt="Rolling Boulder"
-    />
+      <!-- Input field -->
+      <div class="input-area">
+        <input type="text" placeholder="Type a message . . ." />
+        <button>&uarr;</button>
+      </div>
+    </div>
 
     <script src="script.js"></script>
   </body>
