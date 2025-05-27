@@ -10,6 +10,7 @@ html, body {
 
 /* Full height layout wrapper */
 .layout {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -140,15 +141,15 @@ button:hover {
   margin-right: 8px;
 }
 
-/* Rolling Boulder animation */
+/* Rolling Boulder on top of the divider */
 #rollingBoulder {
-  position: fixed;
-  bottom: 0.5px;
+  position: absolute;
+  top: 105px; /* Adjust this based on your h1 + spacing */
   left: 0;
   width: 70px;
   height: auto;
   animation: rollBoulder 30s linear infinite alternate;
-  z-index: 999;
+  z-index: 10;
   pointer-events: none;
 }
 
