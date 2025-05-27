@@ -74,7 +74,7 @@ h1:hover .ai {
 .message {
   display: inline-block;
   font-size: 15px;
-  line-height: 1.4;
+  line-height: 1.6;
   padding: 10px 14px;
   border-radius: 16px;
   max-width: 75%;
@@ -109,7 +109,7 @@ input[type="text"] {
 }
 
 button {
-  background-color: #1a1a1a;
+  background-color: #6c7a89;
   color: white;
   border: none;
   border-radius: 50%;
