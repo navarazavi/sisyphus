@@ -51,17 +51,15 @@ h1:hover .ai {
   padding: 20px;
   margin-top: 30px;
   height: 61.5vh;
-
-  /* 🔥 CHANGE THIS ↓ */
-  max-width: 1200px; /* or 100%, or remove entirely */
+  max-width: 960px;
   width: 100%;
-
   display: flex;
   flex-direction: column;
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
 }
+
 
 
 .messages {
