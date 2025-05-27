@@ -60,10 +60,10 @@ h1:hover .ai {
   margin-right: auto;
 } 
 
-.footer-tagline {
-  font-size: 10px;
-  color: #777;
-  font-style: italic;
+.sisyphus-footer {
+  font-size: 11px;
+  font-family: "Space Grotesk", sans-serif;
+  color: #555;
   text-align: center;
   margin-top: 20px;
   margin-bottom: 30px;
