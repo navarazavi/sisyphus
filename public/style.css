@@ -46,7 +46,7 @@ h1:hover .ai {
 
 .chatbox {
   background: white;
-  border: 2px solid #6c7a89;
+  border: 2px solid #111F22;
   border-radius: 16px;
   padding: 20px;
   margin-top: 30px;
@@ -118,7 +118,7 @@ input[type="text"] {
 }
 
 button {
-  background-color: #6c7a89;
+  background-color: #111F22;
   color: white;
   border: none;
   border-radius: 50%;
