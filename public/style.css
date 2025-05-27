@@ -1,16 +1,27 @@
-body {
-  background-color: #f2f2f2;
+/* Layout reset and base styles */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   font-family: "Space Grotesk", sans-serif;
   color: #1a1a1a;
-  margin: 0;
-  padding-top: 40px;
+  background-color: #f2f2f2;
 }
 
+/* Full height layout wrapper */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header section */
 .container {
   text-align: center;
   max-width: 1700px;
   width: 100%;
   margin: 0 auto;
+  padding-top: 40px;
 }
 
 h1 {
@@ -42,14 +53,17 @@ h1:hover .ai {
   margin-top: 30px;
 }
 
+/* Main chat area fills remaining height */
 .main {
+  flex: 1;
   background-color: white;
-  width: 100%;
   padding: 30px 16px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Chat styles */
+/* Chat content */
 .messages {
   flex: 1;
   overflow-y: auto;
@@ -126,7 +140,7 @@ button:hover {
   margin-right: 8px;
 }
 
-/* Rolling Boulder */
+/* Rolling Boulder animation */
 #rollingBoulder {
   position: fixed;
   bottom: 0.5px;
