@@ -2,10 +2,6 @@ body {
   background-color: #f2f2f2;
   font-family: "Space Grotesk", sans-serif;
   color: #1a1a1a;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  height: 100vh;
   margin: 0;
   padding-top: 40px;
 }
@@ -39,12 +35,6 @@ h1:hover .ai {
   transform: scale(1.2);
 }
 
-.typewriter-temp {
-  white-space: pre-wrap;
-  display: inline;
-}
-
-/* 👇 Divider under header */
 .divider {
   width: 100%;
   height: 1px;
@@ -52,7 +42,6 @@ h1:hover .ai {
   margin-top: 30px;
 }
 
-/* 👇 White background below divider */
 .main {
   background-color: white;
   width: 100%;
@@ -60,7 +49,7 @@ h1:hover .ai {
   box-sizing: border-box;
 }
 
-/* ⬇️ Message styles */
+/* Chat styles */
 .messages {
   flex: 1;
   overflow-y: auto;
@@ -93,7 +82,7 @@ h1:hover .ai {
   text-align: right;
 }
 
-/* ⬇️ Input area */
+/* Input area */
 .input-area {
   display: flex;
   align-items: center;
@@ -137,7 +126,7 @@ button:hover {
   margin-right: 8px;
 }
 
-/* 🎯 Rolling Boulder */
+/* Rolling Boulder */
 #rollingBoulder {
   position: fixed;
   bottom: 0.5px;
@@ -158,7 +147,7 @@ button:hover {
   }
 }
 
-/* 📝 Markdown Styling */
+/* Pretty Markdown Styling */
 .pretty-markdown ul,
 .pretty-markdown ol {
   margin: 16px 0;
@@ -180,5 +169,3 @@ button:hover {
   list-style: disc;
   list-style-position: outside;
 }
-
-
