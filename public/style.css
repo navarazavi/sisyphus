@@ -8,6 +8,7 @@ body {
   height: 100vh;
   margin: 0;
   padding-top: 40px;
+  box-sizing: border-box;
 }
 
 .container {
@@ -15,6 +16,7 @@ body {
   max-width: 1100px;
   width: 100%;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 h1 {
@@ -44,6 +46,7 @@ h1:hover .ai {
   display: inline;
 }
 
+/* 💬 Chatbox */
 .chatbox {
   background: white;
   border: 2px solid #111F22;
@@ -60,6 +63,7 @@ h1:hover .ai {
   margin-right: auto;
 }
 
+/* 💌 Footer */
 .sisyphus-footer {
   font-size: 12px;
   font-family: "Space Grotesk", sans-serif;
@@ -70,6 +74,7 @@ h1:hover .ai {
   width: 100%;
 }
 
+/* 📩 Messages */
 .messages {
   flex: 1;
   overflow-y: auto;
@@ -77,7 +82,7 @@ h1:hover .ai {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  scroll-behavior: smooth; /* 💅 Auto-scroll looks smooth */
+  scroll-behavior: smooth;
 }
 
 .message {
@@ -102,6 +107,7 @@ h1:hover .ai {
   text-align: right;
 }
 
+/* 🖊 Input area */
 .input-area {
   display: flex;
   align-items: center;
@@ -166,7 +172,7 @@ button:hover {
   }
 }
 
-/* 📝 Pretty Markdown Styling */
+/* 📚 Markdown styling */
 .pretty-markdown ul,
 .pretty-markdown ol {
   margin: 16px 0;
