@@ -92,6 +92,10 @@ function typewriterEffect(text, targetElement, speed = 30) {
   type();
 }
 
+function isPlainText(text) {
+  return !/[*_`#\-]/.test(text); // detects markdown characters
+}
+
 function renderMessage(sender, text, temporary = false) {
   const bubble = document.createElement("div");
   bubble.className = `message ${sender}`;
@@ -101,13 +105,18 @@ function renderMessage(sender, text, temporary = false) {
     const dot = document.createElement("span");
     dot.classList.add("dot");
     const content = document.createElement("span");
-
     bubble.appendChild(dot);
     bubble.appendChild(content);
     messageContainer.appendChild(bubble);
     messageContainer.scrollTop = messageContainer.scrollHeight;
 
-    typewriterEffect(text, content); // ✨ magic happens here
+    if (isPlainText(text)) {
+      // Simple sentence = use typewriter
+      typewriterEffect(text, content);
+    } else {
+      // Has formatting = render instantly
+      content.innerHTML = markdownToHTML(text);
+    }
   } else if (sender === "bot" && temporary) {
     bubble.innerHTML = `<span class="dot"></span>${text}`;
     messageContainer.appendChild(bubble);
