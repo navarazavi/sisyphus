@@ -24,6 +24,7 @@ h1 {
   font-size: 48px;
   letter-spacing: -1px;
   margin-bottom: 10px;
+  margin-top: -40px;
   transition: transform 0.3s ease;
   display: inline-block;
 }
