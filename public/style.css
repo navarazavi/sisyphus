@@ -59,6 +59,19 @@ h1:hover .ai {
     blinkCursor 0.8s step-end infinite;
 }
 
+.mountain-bg {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 30vh; /* adjust height if needed */
+  background: url('peak.png') bottom center no-repeat;
+  background-size: cover;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.8; /* tweak to blend with your background */
+}
+
 
 /* 💬 Chatbox */
 .chatbox {
