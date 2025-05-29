@@ -177,14 +177,24 @@ button:hover {
   pointer-events: none;
 }
 
-@keyframes rollBoulder {
+@keyframes rollAround {
   0% {
-    transform: translateX(0) rotate(0deg);
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  25% {
+    transform: translate(calc(100vw - 60px), 0px) rotate(360deg);
+  }
+  50% {
+    transform: translate(calc(100vw - 60px), calc(100vh - 60px)) rotate(720deg);
+  }
+  75% {
+    transform: translate(0px, calc(100vh - 60px)) rotate(1080deg);
   }
   100% {
-    transform: translateX(95vw) rotate(720deg);
+    transform: translate(0px, 0px) rotate(1440deg);
   }
 }
+
 
 /* 📚 Markdown styling */
 .pretty-markdown ul,
