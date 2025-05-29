@@ -165,55 +165,41 @@ button:hover {
   margin-right: 8px;
 }
 
-/* 🎯 ROLLING BOULDER */
-#rollingBoulder {
-  position: fixed;
-  bottom: 0.5px;
-  left: 0;
-  width: 50px;
-  height: auto;
-  animation: rollBoulder 30s linear infinite alternate;
-  z-index: 999;
-  pointer-events: none;
-}
-
-@keyframes rollBoulder {
+@keyframes rollAroundPerimeter {
   0% {
-    transform: translateX(0) rotate(0deg);
-  }
-  100% {
-    transform: translateX(95vw) rotate(720deg);
-  }
-}
-
-#rollingBoulder {
-  position: fixed;
-  bottom: 0.5px;
-  left: 0;
-  width: 60px;
-  height: auto;
-  animation: rollBoulder 30s linear infinite alternate;
-  z-index: 999;
-  pointer-events: auto; /* 👈 make sure she can be clicked */
-}
-
-
-@keyframes rollAround {
-  0% {
-    transform: translate(0px, 0px) rotate(0deg);
+    bottom: -10px;
+    left: 0;
+    transform: rotate(0deg);
   }
   25% {
-    transform: translate(calc(100vw - 60px), 0px) rotate(360deg);
+    bottom: -10px;
+    left: calc(100vw - 60px);
+    transform: rotate(360deg);
   }
   50% {
-    transform: translate(calc(100vw - 60px), calc(100vh - 60px)) rotate(720deg);
+    bottom: calc(100vh - 60px);
+    left: calc(100vw - 60px);
+    transform: rotate(720deg);
   }
   75% {
-    transform: translate(0px, calc(100vh - 60px)) rotate(1080deg);
+    bottom: calc(100vh - 60px);
+    left: 0;
+    transform: rotate(1080deg);
   }
   100% {
-    transform: translate(0px, 0px) rotate(1440deg);
+    bottom: -10px;
+    left: 0;
+    transform: rotate(1440deg);
   }
+}
+
+#rollingBoulder {
+  position: fixed;
+  width: 60px;
+  height: auto;
+  animation: rollAroundPerimeter 30s linear infinite;
+  z-index: 999;
+  pointer-events: auto; /* So it's clickable */
 }
 
 #rollingBoulder.paused {
