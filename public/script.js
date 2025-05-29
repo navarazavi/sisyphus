@@ -80,17 +80,21 @@ async function sendMessage() {
   input.value = "";
 }
 
-function typewriterEffect(text, targetElement, speed = 30) {
+function typewriterEffect(text, targetElement, onComplete = () => {}) {
   let i = 0;
   function type() {
     if (i < text.length) {
       targetElement.textContent += text.charAt(i);
       i++;
-      setTimeout(type, speed);
+      targetElement.parentElement.parentElement.scrollTop = targetElement.parentElement.parentElement.scrollHeight;
+      setTimeout(type, 30);
+    } else {
+      onComplete(); // 👈 scroll one last time after it's done
     }
   }
   type();
 }
+
 
 function isPlainText(text) {
   return !/[*_`#\-]/.test(text); // detects markdown characters
@@ -108,15 +112,16 @@ function renderMessage(sender, text, temporary = false) {
     bubble.appendChild(dot);
     bubble.appendChild(content);
     messageContainer.appendChild(bubble);
-    messageContainer.scrollTop = messageContainer.scrollHeight;
 
     if (isPlainText(text)) {
-      // Simple sentence = use typewriter
-      typewriterEffect(text, content);
+      typewriterEffect(text, content, () => {
+        messageContainer.scrollTop = messageContainer.scrollHeight;
+      });
     } else {
-      // Has formatting = render instantly
       content.innerHTML = markdownToHTML(text);
+      messageContainer.scrollTop = messageContainer.scrollHeight;
     }
+
   } else if (sender === "bot" && temporary) {
     bubble.innerHTML = `<span class="dot"></span>${text}`;
     messageContainer.appendChild(bubble);
@@ -129,6 +134,7 @@ function renderMessage(sender, text, temporary = false) {
 
   return bubble;
 }
+
 
 
 button.addEventListener("click", sendMessage);
