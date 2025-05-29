@@ -103,3 +103,40 @@ input.addEventListener("keypress", function (e) {
   }
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const greetings = [
+    "Greetings, friend! What burden are we carrying today?",
+    "Ah, you've returned. The boulder misses you.",
+    "Existence called. She wants answers.",
+    "Tell me your troubles, but make it poetic.",
+    "The void says hi. What’s on your mind?",
+    "Let’s unpack the existential dread together.",
+    "Is this rock heavier today, or are you just tired?",
+    "Here we go again… push with me.",
+    "If Camus had a chatbot, it’d be me.",
+    "Another day, another meaningless task. Let's chat."
+  ];
+
+  const greetingText = greetings[Math.floor(Math.random() * greetings.length)];
+  const target = document.getElementById("messages");
+
+  const bubble = document.createElement("div");
+  bubble.className = "message bot";
+  bubble.innerHTML = `<span class="dot"></span><span id="typewriterText"></span>`;
+  target.appendChild(bubble);
+
+  let i = 0;
+  const typeTarget = document.getElementById("typewriterText");
+
+  function type() {
+    if (i < greetingText.length) {
+      typeTarget.textContent += greetingText.charAt(i);
+      i++;
+      setTimeout(type, 30); // speed: adjust if needed
+    }
+  }
+
+  type();
+});
+
+
