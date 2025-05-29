@@ -187,7 +187,7 @@ button:hover {
   width: 85px;
   height: auto;
   animation: rollUpMountain 25s ease-in-out infinite alternate;
-  z-index: 9999;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -204,8 +204,8 @@ button:hover {
   80%  { transform: translate(77vw, -49vh) rotate(720deg); }
   90%  { transform: translate(86vw, -61vh) rotate(810deg); }
   94%  { transform: translate(93vw, -58vh) rotate(810deg); }
-  97%  { transform: translate(97vw, -55vh) rotate(810deg); }
-  100% { transform: translate(109vw, -53vh) rotate(900deg); }
+  97%  { transform: translate(97vw, -39vh) rotate(810deg); }
+  100% { transform: translate(109vw, -33vh) rotate(900deg); }
 }
 
 #rollingBoulder.paused {
