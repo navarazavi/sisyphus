@@ -184,10 +184,10 @@ button:hover {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 60px;
+  width: 83px;
   height: auto;
-  animation: rollUpAndDown 20s ease-in-out infinite;
-  z-index: 2;
+  animation: rollUpAndDown 40s ease-in-out infinite;
+  z-index: -1;
   pointer-events: auto;
 }
 
