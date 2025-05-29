@@ -206,14 +206,3 @@ button:hover {
   list-style: disc;
   list-style-position: outside;
 }
-
-@keyframes typewriter {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blinkCursor {
-  0% { border-color: transparent; }
-  50% { border-color: black; }
-  100% { border-color: transparent; }
-}
