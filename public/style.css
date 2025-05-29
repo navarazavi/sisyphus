@@ -130,10 +130,10 @@ h1:hover .ai {
 
 input[type="text"] {
   flex: 1;
-  padding: 12px;
+  padding: 11px;
   border: 1.5px solid #ccc;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 13px;
   margin-right: 10px;
 }
 
