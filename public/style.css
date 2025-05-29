@@ -195,6 +195,10 @@ button:hover {
   }
 }
 
+#rollingBoulder.paused {
+  animation-play-state: paused;
+}
+
 
 /* 📚 Markdown styling */
 .pretty-markdown ul,
