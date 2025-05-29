@@ -177,48 +177,32 @@ button:hover {
   background-size: cover;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.89; /* tweak to blend with your background */
+  opacity: 0.99; /* tweak to blend with your background */
 }
 
 #rollingBoulder {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 83px;
+  width: 60px;
   height: auto;
-  animation: rollUpAndDown 40s ease-in-out infinite;
-  z-index: -1;
+  animation: rollUpExactPath 27s ease-in-out infinite alternate;
+  z-index: 2;
   pointer-events: auto;
+
 }
 
-@keyframes rollUpAndDown {
-  0% {
-    transform: translate(0vw, 0vh) rotate(0deg);
-  }
-  15% {
-    transform: translate(15vw, -1vh) rotate(90deg);
-  }
-  30% {
-    transform: translate(30vw, -2.5vh) rotate(180deg);
-  }
-  45% {
-    transform: translate(45vw, -5vh) rotate(270deg);
-  }
-  60% {
-    transform: translate(60vw, -10vh) rotate(360deg);
-  }
-  75% {
-    transform: translate(75vw, -18vh) rotate(450deg); /* PEAK */
-  }
-  85% {
-    transform: translate(60vw, -10vh) rotate(630deg);
-  }
-  92% {
-    transform: translate(30vw, -2.5vh) rotate(810deg);
-  }
-  100% {
-    transform: translate(0vw, 0vh) rotate(900deg);
-  }
+@keyframes rollUpExactPath {
+  0%   { transform: translate(6.51vw, 7.23vh) rotate(0deg); }
+  10%  { transform: translate(16.28vw, 8.2vh) rotate(90deg); }
+  20%  { transform: translate(26.04vw, 11.13vh) rotate(180deg); }
+  30%  { transform: translate(35.81vw, 16.02vh) rotate(270deg); }
+  40%  { transform: translate(45.57vw, 25.78vh) rotate(360deg); }
+  50%  { transform: translate(55.34vw, 38.48vh) rotate(450deg); }
+  60%  { transform: translate(65.10vw, 51.17vh) rotate(540deg); }
+  70%  { transform: translate(74.87vw, 58.98vh) rotate(630deg); }
+  85%  { transform: translate(81.38vw, 63.87vh) rotate(810deg); }
+  100% { transform: translate(91.15vw, 64.84vh) rotate(900deg); }
 }
 
 
