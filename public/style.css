@@ -195,9 +195,9 @@ button:hover {
 
 #rollingBoulder {
   position: fixed;
-  width: 60px;
+  width: 40px;
   height: auto;
-  animation: rollAroundPerimeter 30s linear infinite;
+  animation: rollAroundPerimeter 60s linear infinite;
   z-index: 999;
   pointer-events: auto; /* So it's clickable */
 }
