@@ -192,19 +192,19 @@ button:hover {
 }
 
 @keyframes rollUpMountain {
-  0%   { transform: translate(0vw, -.65vh) rotate(0deg); }
-  10%  { transform: translate(2vw, -1vh) rotate(90deg); }
+  0%   { transform: translate(0vw, -.85vh) rotate(0deg); }
+  10%  { transform: translate(5vw, -1vh) rotate(90deg); }
   20%  { transform: translate(15vw, -2vh) rotate(180deg); }
   30%  { transform: translate(23vw, -3vh) rotate(270deg); }
   40%  { transform: translate(32vw, -3vh) rotate(360deg); }
   50%  { transform: translate(42vw, -4vh) rotate(450deg); }
-  55%  { transform: translate(47vw, -4.3vh) rotate(500deg); }
   58%  { transform: translate(49vw, -5vh) rotate(520deg); }
-  60%  { transform: translate(50vw, -9vh) rotate(540deg); }
-  70%  { transform: translate(67vw, -25vh) rotate(630deg); }
-  80%  { transform: translate(74vw, -49vh) rotate(720deg); }
-  90%  { transform: translate(85vw, -60vh) rotate(810deg); }
-  100% { transform: translate(90vw, -53vh) rotate(900deg); }
+  60%  { transform: translate(59vw, -8vh) rotate(540deg); }
+  70%  { transform: translate(67vw, -23vh) rotate(630deg); }
+  80%  { transform: translate(77vw, -49vh) rotate(720deg); }
+  90%  { transform: translate(86vw, -61vh) rotate(810deg); }
+  94%  { transform: translate(92vw, -58vh) rotate(810deg); }
+  100% { transform: translate(99vw, -53vh) rotate(900deg); }
 }
 
 #rollingBoulder.paused {
