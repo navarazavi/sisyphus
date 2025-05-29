@@ -186,25 +186,19 @@ button:hover {
   left: 0;
   width: 60px;
   height: auto;
-  animation: rollUpExactPath 27s ease-in-out infinite alternate;
-  z-index: 5;
-  pointer-events: auto;
-
+  animation: rollTest 5s linear infinite;
+  z-index: 9999;
+  pointer-events: none;
+  /* TEMP DEBUG - remove these once it works */
+  background-color: red;
+  border: 2px solid blue;
 }
 
-@keyframes rollUpExactPath {
-  0%   { transform: translate(6.51vw, 7.23vh) rotate(0deg); }
-  10%  { transform: translate(16.28vw, 8.2vh) rotate(90deg); }
-  20%  { transform: translate(26.04vw, 11.13vh) rotate(180deg); }
-  30%  { transform: translate(35.81vw, 16.02vh) rotate(270deg); }
-  40%  { transform: translate(45.57vw, 25.78vh) rotate(360deg); }
-  50%  { transform: translate(55.34vw, 38.48vh) rotate(450deg); }
-  60%  { transform: translate(65.10vw, 51.17vh) rotate(540deg); }
-  70%  { transform: translate(74.87vw, 58.98vh) rotate(630deg); }
-  85%  { transform: translate(81.38vw, 63.87vh) rotate(810deg); }
-  100% { transform: translate(91.15vw, 64.84vh) rotate(900deg); }
+/* Simple test animation */
+@keyframes rollTest {
+  0%   { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(300px, -100px) rotate(360deg); }
 }
-
 
 #rollingBoulder.paused {
   animation-play-state: paused;
