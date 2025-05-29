@@ -186,18 +186,24 @@ button:hover {
   left: 0;
   width: 60px;
   height: auto;
-  animation: rollTest 5s linear infinite;
+  animation: rollUpMountain 25s ease-in-out infinite alternate;
   z-index: 9999;
   pointer-events: none;
-  /* TEMP DEBUG - remove these once it works */
-  background-color: red;
-  border: 2px solid blue;
 }
 
-/* Simple test animation */
-@keyframes rollTest {
-  0%   { transform: translate(0, 0) rotate(0deg); }
-  100% { transform: translate(300px, -100px) rotate(360deg); }
+@keyframes rollUpMountain {
+  0%   { transform: translate(11.72vw, 10.99vh) rotate(0deg); }
+  9%   { transform: translate(19.53vw, 11.44vh) rotate(90deg); }
+  18%  { transform: translate(26.86vw, 12.35vh) rotate(180deg); }
+  27%  { transform: translate(34.18vw, 13.71vh) rotate(270deg); }
+  36%  { transform: translate(41.5vw, 16.44vh) rotate(360deg); }
+  45%  { transform: translate(48.83vw, 20.07vh) rotate(450deg); }
+  55%  { transform: translate(56.15vw, 26.43vh) rotate(540deg); }
+  64%  { transform: translate(63.48vw, 34.6vh) rotate(630deg); }
+  73%  { transform: translate(70.8vw, 45.5vh) rotate(720deg); }
+  82%  { transform: translate(78.12vw, 56.4vh) rotate(810deg); }
+  91%  { transform: translate(84.23vw, 66.39vh) rotate(900deg); }
+  100% { transform: translate(89.11vw, 69.12vh) rotate(990deg); }
 }
 
 #rollingBoulder.paused {
