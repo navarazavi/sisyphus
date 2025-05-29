@@ -46,16 +46,6 @@ h1:hover .ai {
   display: inline;
 }
 
-@keyframes typewriter {
-  from { width: 0 }
-  to { width: 100% }
-}
-
-@keyframes blinkCursor {
-  0% { border-color: transparent; }
-  50% { border-color: black; }
-  100% { border-color: transparent; }
-}
 
 .typewriter {
   display: inline-block;
@@ -215,4 +205,15 @@ button:hover {
 .pretty-markdown ul {
   list-style: disc;
   list-style-position: outside;
+}
+
+@keyframes typewriter {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blinkCursor {
+  0% { border-color: transparent; }
+  50% { border-color: black; }
+  100% { border-color: transparent; }
 }
