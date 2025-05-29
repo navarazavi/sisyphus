@@ -177,6 +177,27 @@ button:hover {
   pointer-events: none;
 }
 
+@keyframes rollBoulder {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  100% {
+    transform: translateX(95vw) rotate(720deg);
+  }
+}
+
+#rollingBoulder {
+  position: fixed;
+  bottom: 0.5px;
+  left: 0;
+  width: 60px;
+  height: auto;
+  animation: rollBoulder 30s linear infinite alternate;
+  z-index: 999;
+  pointer-events: auto; /* 👈 make sure she can be clicked */
+}
+
+
 @keyframes rollAround {
   0% {
     transform: translate(0px, 0px) rotate(0deg);
