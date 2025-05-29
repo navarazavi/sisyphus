@@ -50,6 +50,7 @@ function markdownToHTML(md) {
 }
 
 
+
 async function sendMessage() {
   const userInput = input.value.trim();
   if (!userInput) return;
@@ -79,22 +80,47 @@ async function sendMessage() {
   input.value = "";
 }
 
+function typewriterEffect(text, targetElement, speed = 30) {
+  let i = 0;
+  function type() {
+    if (i < text.length) {
+      targetElement.textContent += text.charAt(i);
+      i++;
+      setTimeout(type, speed);
+    }
+  }
+  type();
+}
+
 function renderMessage(sender, text, temporary = false) {
   const bubble = document.createElement("div");
   bubble.className = `message ${sender}`;
   bubble.classList.add("pretty-markdown");
-  messageContainer.appendChild(bubble);
-  messageContainer.scrollTop = messageContainer.scrollHeight;
 
-  if (sender === "bot") {
-    const formattedText = markdownToHTML(text);
-    bubble.innerHTML = `<span class="dot"></span>${formattedText}`;
+  if (sender === "bot" && !temporary) {
+    const dot = document.createElement("span");
+    dot.classList.add("dot");
+    const content = document.createElement("span");
+
+    bubble.appendChild(dot);
+    bubble.appendChild(content);
+    messageContainer.appendChild(bubble);
+    messageContainer.scrollTop = messageContainer.scrollHeight;
+
+    typewriterEffect(text, content); // ✨ magic happens here
+  } else if (sender === "bot" && temporary) {
+    bubble.innerHTML = `<span class="dot"></span>${text}`;
+    messageContainer.appendChild(bubble);
+    messageContainer.scrollTop = messageContainer.scrollHeight;
   } else {
     bubble.innerText = text;
+    messageContainer.appendChild(bubble);
+    messageContainer.scrollTop = messageContainer.scrollHeight;
   }
 
   return bubble;
 }
+
 
 button.addEventListener("click", sendMessage);
 input.addEventListener("keypress", function (e) {
