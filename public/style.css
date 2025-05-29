@@ -165,63 +165,51 @@ button:hover {
   margin-right: 8px;
 }
 
-.mountain-path {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100vw;
-  height: 40vh;
-  z-index: 1;
-  pointer-events: none;
-}
-
-.mountain-path::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  border-bottom: 4px solid #888;
-  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
-  transform: scaleY(0.5);
-  opacity: 0.5;
-  z-index: 0;
-}
-
 #rollingBoulder {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   width: 60px;
   height: auto;
-  animation: rollOverPeak 12s ease-in-out infinite alternate;
-  z-index: 2;
+  animation: rollUpStruggleDownRelief 15s ease-in-out infinite;
+  z-index: 999;
+  pointer-events: auto; /* so it can be clicked */
 }
 
-@keyframes rollOverPeak {
+@keyframes rollUpStruggleDownRelief {
   0% {
-    transform: translate(0vw, 0vh) rotate(0deg);
+    transform: translate(0, 0) rotate(0deg);
   }
-  25% {
-    transform: translate(25vw, -10vh) rotate(180deg);
+
+  20% {
+    transform: translate(20vw, -5vh) rotate(90deg);
   }
-  50% {
-    transform: translate(50vw, -20vh) rotate(360deg); /* peak */
+
+  40% {
+    transform: translate(40vw, -15vh) rotate(180deg);
   }
-  75% {
-    transform: translate(75vw, -10vh) rotate(540deg);
+
+  60% {
+    transform: translate(60vw, -25vh) rotate(270deg); /* peak */
   }
+
+  70% {
+    transform: translate(70vw, -15vh) rotate(360deg);
+  }
+
+  85% {
+    transform: translate(85vw, -5vh) rotate(540deg);
+  }
+
   100% {
-    transform: translate(100vw, 0vh) rotate(720deg);
+    transform: translate(95vw, 0) rotate(720deg);
   }
 }
-
 
 #rollingBoulder.paused {
   animation-play-state: paused;
 }
+
 
 
 /* 📚 Markdown styling */
