@@ -169,8 +169,8 @@ button:hover {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 50vw;
-  height: 10vh; /* adjust height if needed */
+  width: 100vw;
+  height: 50vh; /* adjust height if needed */
   background: url('mount.png') bottom center no-repeat;
   background-size: cover;
   z-index: 0;
