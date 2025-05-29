@@ -82,16 +82,21 @@ async function sendMessage() {
 
 function typewriterEffect(text, targetElement, onComplete = () => {}) {
   let i = 0;
+
   function type() {
     if (i < text.length) {
       targetElement.textContent += text.charAt(i);
       i++;
-      targetElement.parentElement.parentElement.scrollTop = targetElement.parentElement.parentElement.scrollHeight;
-      setTimeout(type, 30);
+
+      // 🔥 Smooth auto-scroll every step
+      targetElement.scrollIntoView({ behavior: "smooth", block: "end" });
+
+      setTimeout(type, 30); // Adjust speed here
     } else {
-      onComplete(); // 👈 scroll one last time after it's done
+      onComplete(); // Final scroll if needed
     }
   }
+
   type();
 }
 
