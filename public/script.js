@@ -185,4 +185,10 @@ document.addEventListener("DOMContentLoaded", () => {
   type();
 });
 
+const boulder = document.getElementById("rollingBoulder");
+
+boulder.addEventListener("click", () => {
+  boulder.classList.toggle("paused");
+});
+
 
