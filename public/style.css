@@ -192,17 +192,16 @@ button:hover {
 }
 
 @keyframes rollUpMountain {
-  0%   { transform: translate(0vw, -.92vh) rotate(0deg); }
-  10%  { transform: translate(10vw, -1vh) rotate(90deg); }
+  0%   { transform: translate(0vw, -.97vh) rotate(0deg); }
+  10%  { transform: translate(14vw, -1vh) rotate(90deg); }
   20%  { transform: translate(15vw, -2vh) rotate(180deg); }
   30%  { transform: translate(23vw, -3vh) rotate(270deg); }
   40%  { transform: translate(32vw, -3vh) rotate(360deg); }
   50%  { transform: translate(42vw, -4vh) rotate(450deg); }
-  55%  { transform: translate(54vw, -6.3vh) rotate(520deg); }
-  60%  { transform: translate(62vw, -10.5vh) rotate(540deg); }
+  60%  { transform: translate(58vw, -13.5vh) rotate(540deg); }
   70%  { transform: translate(67vw, -23vh) rotate(630deg); }
   80%  { transform: translate(77vw, -49vh) rotate(720deg); }
-  90%  { transform: translate(87vw, -61.3vh) rotate(810deg); }
+  90%  { transform: translate(86.1vw, -61.9vh) rotate(810deg); }
   100% { transform: translate(99vw, -34vh) rotate(900deg); }
 }
 
