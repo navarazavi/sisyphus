@@ -90,7 +90,7 @@ h1:hover .ai {
   z-index: 1;
 
   /* 👇 Add this line — adjust the px as needed */
-  transform: translateX(444px);
+  transform: translateX(455px);
 }
 
 
