@@ -90,7 +90,7 @@ h1:hover .ai {
   z-index: 1;
 
   /* 👇 Add this line — adjust the px as needed */
-  transform: translateX(455px);
+ /* transform: translateX(455px);*/
 }
 
 
@@ -171,20 +171,20 @@ button:hover {
   margin-right: 8px;
 }
 
-.mountain-bg {
+/*.mountain-bg {
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100vw;
   height: 80vh; /* adjust height if needed */
-  background: url('peak.png') bottom center no-repeat;
+  /*background: url('peak.png') bottom center no-repeat;
   background-size: cover;
   z-index: 0;
   pointer-events: none;
   opacity: 0.93; /* tweak to blend with your background */
 }
 
-#rollingBoulder {
+/*#rollingBoulder {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -194,7 +194,7 @@ button:hover {
   z-index: 0;
   opacity: 0.93;
   pointer-events: none;
-}
+}/*
 
 @keyframes rollUpMountain {
   0%   { transform: translate(0vw, -.97vh) rotate(0deg); }
