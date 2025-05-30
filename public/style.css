@@ -188,7 +188,7 @@ button:hover {
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100px;
+  width: 70px;
   height: auto;
   animation: rollUpMountain 25s ease-in-out infinite alternate;
   z-index: 0;
