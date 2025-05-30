@@ -82,7 +82,7 @@ h1:hover .ai {
 .sisyphus-footer {
   font-size: 12px;
   font-family: "Space Grotesk", sans-serif;
-  color: #555;
+  color: #FFFFFF;
   text-align: center;
   margin-top: 15px;
   margin-bottom: 30px;
@@ -193,15 +193,15 @@ button:hover {
 
 @keyframes rollUpMountain {
   0%   { transform: translate(0vw, -.97vh) rotate(0deg); }
-  10%  { transform: translate(14vw, -1vh) rotate(90deg); }
-  20%  { transform: translate(15vw, -2vh) rotate(180deg); }
+  10%  { transform: translate(20vw, -1vh) rotate(90deg); }
+  20%  { transform: translate(21vw, -2vh) rotate(180deg); }
   30%  { transform: translate(23vw, -3vh) rotate(270deg); }
   40%  { transform: translate(32vw, -3vh) rotate(360deg); }
-  50%  { transform: translate(42vw, -4vh) rotate(450deg); }
-  60%  { transform: translate(58vw, -13.5vh) rotate(540deg); }
+  50%  { transform: translate(45vw, -4.9vh) rotate(450deg); }
+  60%  { transform: translate(58vw, -15.5vh) rotate(540deg); }
   70%  { transform: translate(67vw, -23vh) rotate(630deg); }
   80%  { transform: translate(77vw, -49vh) rotate(720deg); }
-  90%  { transform: translate(86.1vw, -61.9vh) rotate(810deg); }
+  90%  { transform: translate(85.3vw, -61.2vh) rotate(810deg); }
   100% { transform: translate(99vw, -34vh) rotate(900deg); }
 }
 
