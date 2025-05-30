@@ -198,13 +198,12 @@ button:hover {
   30%  { transform: translate(23vw, -3vh) rotate(270deg); }
   40%  { transform: translate(32vw, -3vh) rotate(360deg); }
   50%  { transform: translate(42vw, -4vh) rotate(450deg); }
-  55%  { transform: translate(54vw, -5.3vh) rotate(520deg); }
-  60%  { transform: translate(62vw, -10vh) rotate(540deg); }
+  55%  { transform: translate(54vw, -6.3vh) rotate(520deg); }
+  60%  { transform: translate(62vw, -10.5vh) rotate(540deg); }
   70%  { transform: translate(67vw, -23vh) rotate(630deg); }
   80%  { transform: translate(77vw, -49vh) rotate(720deg); }
-  90%  { transform: translate(86vw, -61vh) rotate(810deg); }
-  94%  { transform: translate(98vw, -58vh) rotate(810deg); }
-  100% { transform: translate(109vw, -33vh) rotate(900deg); }
+  90%  { transform: translate(87vw, -61.3vh) rotate(810deg); }
+  100% { transform: translate(99vw, -34vh) rotate(900deg); }
 }
 
 #rollingBoulder.paused {
