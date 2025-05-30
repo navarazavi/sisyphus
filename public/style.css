@@ -177,7 +177,7 @@ button:hover {
   background-size: cover;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.99; /* tweak to blend with your background */
+  opacity: 0.79; /* tweak to blend with your background */
 }
 
 #rollingBoulder {
@@ -188,20 +188,22 @@ button:hover {
   height: auto;
   animation: rollUpMountain 25s ease-in-out infinite alternate;
   z-index: 0;
+  opacity: 0.79;
   pointer-events: none;
 }
 
 @keyframes rollUpMountain {
   0%   { transform: translate(0vw, -.97vh) rotate(0deg); }
-  10%  { transform: translate(20vw, -1vh) rotate(90deg); }
+  10%  { transform: translate(20vw, -1.7vh) rotate(90deg); }
   30%  { transform: translate(29vw, -2.5vh) rotate(270deg); }
   40%  { transform: translate(36vw, -3vh) rotate(360deg); }
+  43%  { transform: translate(39vw, -2.8vh) rotate(360deg); }
   50%  { transform: translate(45vw, -4.9vh) rotate(450deg); }
-  60%  { transform: translate(56vw, -11.5vh) rotate(540deg); }
+  60%  { transform: translate(60vw, -11.5vh) rotate(540deg); }
   70%  { transform: translate(67vw, -23vh) rotate(630deg); }
   80%  { transform: translate(77vw, -49vh) rotate(720deg); }
   90%  { transform: translate(85.3vw, -60.9vh) rotate(810deg); }
-  100% { transform: translate(103vw, -34vh) rotate(900deg); }
+  100% { transform: translate(106vw, -35vh) rotate(900deg); }
 }
 
 #rollingBoulder.paused {
