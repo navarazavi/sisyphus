@@ -194,15 +194,14 @@ button:hover {
 @keyframes rollUpMountain {
   0%   { transform: translate(0vw, -.97vh) rotate(0deg); }
   10%  { transform: translate(20vw, -1vh) rotate(90deg); }
-  20%  { transform: translate(21vw, -2vh) rotate(180deg); }
-  30%  { transform: translate(23vw, -3vh) rotate(270deg); }
+  30%  { transform: translate(23vw, -2.5vh) rotate(270deg); }
   40%  { transform: translate(32vw, -3vh) rotate(360deg); }
   50%  { transform: translate(45vw, -4.9vh) rotate(450deg); }
-  60%  { transform: translate(58vw, -15.5vh) rotate(540deg); }
+  60%  { transform: translate(54vw, -13.5vh) rotate(540deg); }
   70%  { transform: translate(67vw, -23vh) rotate(630deg); }
   80%  { transform: translate(77vw, -49vh) rotate(720deg); }
-  90%  { transform: translate(85.3vw, -61.2vh) rotate(810deg); }
-  100% { transform: translate(99vw, -34vh) rotate(900deg); }
+  90%  { transform: translate(85.3vw, -60.9vh) rotate(810deg); }
+  100% { transform: translate(101vw, -34vh) rotate(900deg); }
 }
 
 #rollingBoulder.paused {
