@@ -176,7 +176,7 @@ button:hover {
   bottom: 0;
   left: 0;
   width: 100vw;
-  height: 100vh; /* adjust height if needed */
+  height: 80vh; /* adjust height if needed */
   background: url('peaked.png') bottom center no-repeat;
   background-size: cover;
   z-index: 0;
